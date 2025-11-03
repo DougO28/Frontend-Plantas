@@ -1,0 +1,227 @@
+/* src/styles/Dashboard.css */
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-container h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2d3748;
+}
+
+/* Tarjetas de Estadísticas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.stat-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Secciones */
+.section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.alert-section {
+  border-left: 4px solid #f56565;
+}
+
+/* Estados de Pedidos */
+.estado-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.estado-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 3px solid #4299e1;
+}
+
+.estado-label {
+  font-weight: 500;
+  color: #2d3748;
+  text-transform: capitalize;
+}
+
+.estado-count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4299e1;
+}
+
+/* Tablas */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background: #edf2f7;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #2d3748;
+  border-bottom: 2px solid #cbd5e0;
+}
+
+.data-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.alert-row {
+  background: #fff5f5;
+}
+
+/* Badges */
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge.danger {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.badge.warning {
+  background: #feebc8;
+  color: #c05621;
+}
+
+/* Gráfica de Barras */
+.chart-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 300px;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.chart-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 100px;
+}
+
+.chart-bar {
+  width: 60px;
+  background: linear-gradient(to top, #4299e1, #667eea);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  min-height: 20px;
+  transition: height 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.bar-value {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.bar-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.bar-sublabel {
+  font-size: 0.7rem;
+  color: #718096;
+}
+
+/* Mensajes */
+.empty-message,
+.success-message,
+.error-message {
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.empty-message {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.success-message {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.error-message {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.update-info {
+  text-align: center;
+  color: #718096;
+  font-size: 0.875rem;
+  margin-top: 2rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.25rem;
+  color: #4a5568;
+}

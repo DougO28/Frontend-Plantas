@@ -1,0 +1,527 @@
+/* src/styles/OrderList.css */
+.order-list-container {
+  min-height: 100vh;
+  background-color: #f7fafc;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 32px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-new-order {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .btn-new-order {
+    padding: 14px 28px;
+    font-size: 17px;
+  }
+}
+
+.btn-new-order:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+/* Barra de filtros */
+.filters-bar {
+  margin-bottom: 32px;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-label {
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .filter-label {
+    font-size: 17px;
+  }
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 16px;
+  background: #f7fafc;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .filter-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
+
+.filter-btn:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.filter-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.filter-count {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Lista de pedidos */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.order-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.order-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.order-header {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+@media (min-width: 768px) {
+  .order-header {
+    padding: 24px 32px;
+  }
+}
+
+.order-number {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.order-number .label {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .order-number .label {
+    font-size: 16px;
+  }
+}
+
+.order-number .value {
+  font-size: 16px;
+  color: #1a202c;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .order-number .value {
+    font-size: 19px;
+  }
+}
+
+/* Badges de estado */
+.status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+  .status-badge {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+.badge-warning {
+  background: #fef5e7;
+  color: #d97706;
+}
+
+.badge-info {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.badge-processing {
+  background: #fce7f3;
+  color: #db2777;
+}
+
+.badge-shipped {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+.badge-transit {
+  background: #ddd6fe;
+  color: #7c3aed;
+}
+
+.badge-success {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.badge-error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.badge-default {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Cuerpo del pedido */
+.order-body {
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  .order-body {
+    padding: 32px;
+  }
+}
+
+.order-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .order-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .order-info-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label {
+  font-size: 13px;
+  color: #718096;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .info-label {
+    font-size: 14px;
+  }
+}
+
+.info-value {
+  font-size: 15px;
+  color: #1a202c;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .info-value {
+    font-size: 16px;
+  }
+}
+
+.info-item.total .info-value.price {
+  font-size: 22px;
+  color: #38a169;
+}
+
+@media (min-width: 768px) {
+  .info-item.total .info-value.price {
+    font-size: 26px;
+  }
+}
+
+/* Detalles de productos */
+.order-details {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #f7fafc;
+  border-radius: 12px;
+}
+
+.order-details h4 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #1a202c;
+}
+
+@media (min-width: 768px) {
+  .order-details h4 {
+    font-size: 18px;
+  }
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  gap: 12px;
+}
+
+.product-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1;
+}
+
+.product-name {
+  font-size: 14px;
+  color: #1a202c;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .product-name {
+    font-size: 15px;
+  }
+}
+
+.product-quantity {
+  font-size: 13px;
+  color: #718096;
+  background: #edf2f7;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 15px;
+  color: #38a169;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .product-price {
+    font-size: 16px;
+  }
+}
+
+/* Observaciones y calificación */
+.order-observations,
+.order-rating {
+  padding: 16px;
+  background: #fffaf0;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.order-rating {
+  background: #fef3c7;
+  border-left-color: #eab308;
+}
+
+.order-observations strong,
+.order-rating strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #1a202c;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .order-observations strong,
+  .order-rating strong {
+    font-size: 15px;
+  }
+}
+
+.order-observations p,
+.rating-comment {
+  margin: 8px 0 0 0;
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .order-observations p,
+  .rating-comment {
+    font-size: 15px;
+  }
+}
+
+.rating-stars {
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+/* Acciones del pedido */
+.order-actions {
+  padding: 20px 24px;
+  background: #f7fafc;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 2px solid #e2e8f0;
+}
+
+@media (min-width: 768px) {
+  .order-actions {
+    padding: 24px 32px;
+  }
+}
+
+.btn-details,
+.btn-rate,
+.btn-cancel {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+@media (min-width: 768px) {
+  .btn-details,
+  .btn-rate,
+  .btn-cancel {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}
+
+.btn-details {
+  background: #667eea;
+  color: white;
+}
+
+.btn-details:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+}
+
+.btn-rate {
+  background: #f59e0b;
+  color: white;
+}
+
+.btn-rate:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  background: white;
+  color: #dc2626;
+  border: 2px solid #dc2626;
+}
+
+.btn-cancel:hover {
+  background: #fee2e2;
+  transform: translateY(-2px);
+}
+
+/* Estados vacíos */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.empty-state p {
+  font-size: 18px;
+  color: #718096;
+  margin: 0 0 20px 0;
+}
+
+@media (min-width: 768px) {
+  .empty-state p {
+    font-size: 20px;
+  }
+}

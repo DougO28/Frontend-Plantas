@@ -1,0 +1,246 @@
+/* src/styles/Navbar.css */
+.navbar {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.navbar h1 {
+  font-size: 22px;
+  color: #1a202c;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navbar h1:hover {
+  color: #667eea;
+}
+
+@media (min-width: 768px) {
+  .navbar h1 {
+    font-size: 30px;
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 8px 16px;
+  background: transparent;
+  color: #4a5568;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background-color: #f7fafc;
+  color: #667eea;
+}
+
+@media (min-width: 768px) {
+  .nav-link {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .nav-right {
+    gap: 24px;
+  }
+}
+
+.user-name {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 14px;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .user-name {
+    display: inline;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .user-name {
+    font-size: 17px;
+  }
+}
+
+.logout-btn {
+  padding: 10px 16px;
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .logout-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+.logout-btn:hover {
+  background-color: #c53030;
+}
+
+/* Botón del carrito */
+.cart-btn {
+  padding: 10px 16px;
+  background: #38a169;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .cart-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+.cart-btn:hover {
+  background: #2f855a;
+  transform: translateY(-2px);
+}
+
+.cart-badge {
+  background: #fc8181;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  border: 2px solid white;
+}
+
+@media (min-width: 768px) {
+  .cart-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+}
+/* src/styles/Navbar.css */
+
+.nav-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.nav-brand-container:hover {
+  opacity: 0.9;
+}
+
+.nav-logo {
+  height: 40px;  /* Ajusta según tu logo */
+  width: auto;
+}
+
+.nav-brand-container h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* src/styles/Navbar.css */
+
+.cart-btn {
+  background: transparent;  /* ✅ Quitar fondo verde */
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-btn:hover {
+  background: rgba(255, 255, 255, 0.1);  /* ✅ Efecto hover sutil */
+  transform: scale(1.05);
+}
+
+.cart-icon {
+  width: 28px;   /* ✅ Ajusta el tamaño según tu icono */
+  height: 28px;
+  object-fit: contain;
+  
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #f56565;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+}
