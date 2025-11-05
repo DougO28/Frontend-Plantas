@@ -138,54 +138,312 @@
   color: #c05621;
 }
 
-/* Gráfica de Barras */
+/* FILTROS */
+.filters-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.625rem 1.25rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: #8BC34A;
+  color: #689F38;
+  transform: translateY(-1px);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #8BC34A, #689F38);
+  color: white;
+  border-color: #689F38;
+}
+
+.custom-date-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.date-input {
+  padding: 0.625rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #475569;
+  transition: border-color 0.2s;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #8BC34A;
+}
+
+.apply-filter-btn {
+  padding: 0.625rem 1.5rem;
+  background: linear-gradient(135deg, #8BC34A, #689F38);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.apply-filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 195, 74, 0.3);
+}
+
+.export-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+  align-self: flex-start;
+}
+
+.export-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.export-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* GRÁFICA DE BARRAS */
+
+/* Wrapper con scroll CONDICIONAL */
+.chart-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #8BC34A #e2e8f0;
+}
+
+/* Clase para 7 días o menos (sin scroll, centrado) */
+.chart-scroll-wrapper.no-scroll {
+  overflow-x: visible;
+}
+
+.chart-scroll-wrapper.no-scroll .chart-container {
+  justify-content: space-around;
+}
+
+/* Estilo del scrollbar en Chrome/Safari */
+.chart-scroll-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.chart-scroll-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.chart-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8BC34A, #689F38);
+  border-radius: 10px;
+  border: 2px solid #f1f5f9;
+}
+
+.chart-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #689F38, #558B2F);
+}
+
+/* Wrapper para incluir líneas de referencia */
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Líneas de referencia horizontales */
+.chart-grid-lines {
+  position: absolute;
+  width: 100%;
+  height: 450px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2rem 1rem 4rem;
+}
+
+/* Cada línea de referencia */
+.grid-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #cbd5e1 5%, #cbd5e1 95%, transparent);
+  position: relative;
+  opacity: 0.5;
+}
+
+/* Etiquetas de porcentaje en las líneas */
+.grid-label {
+  position: absolute;
+  left: -3rem;
+  top: -0.625rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Contenedor de la gráfica de barras - CRITICO: Altura fija para que los % funcionen */
 .chart-container {
   display: flex;
   align-items: flex-end;
-  justify-content: space-around;
-  height: 300px;
-  padding: 1rem;
-  background: #f7fafc;
-  border-radius: 8px;
+  justify-content: flex-start;
+  height: 450px;
+  min-width: fit-content;
+  padding: 2rem 1rem 1rem;
+  background: linear-gradient(to top, #f8fafc 0%, #ffffff 100%);
+  border-radius: 12px;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+  border: 1px solid #e2e8f0;
 }
 
+/* Ajuste para pocos días (sin scroll) */
+.chart-container.few-days {
+  min-width: 100%;
+  justify-content: space-around;
+}
+
+/* Wrapper de cada barra */
 .chart-bar-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
-  max-width: 100px;
+  flex: 0 0 auto;
+  min-width: 70px;
+  max-width: 70px;
+  height: 100%;
+  justify-content: flex-end;
 }
 
+/* Barras flexibles para pocos días */
+.chart-container.few-days .chart-bar-wrapper {
+  flex: 1 1 auto;
+  min-width: 60px;
+  max-width: 140px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+/* La barra en sí - CRITICO: Usa box-sizing para incluir padding en el height */
 .chart-bar {
-  width: 60px;
-  background: linear-gradient(to top, #4299e1, #667eea);
-  border-radius: 8px 8px 0 0;
+  width: 100%;
+  min-height: 25px !important;
+  background: linear-gradient(135deg, #8BC34A, #689F38);
+  border-radius: 10px 10px 0 0;
   position: relative;
-  min-height: 20px;
-  transition: height 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 0.5rem;
+  padding-top: 0.75rem;
+  box-shadow: 0 4px 12px rgba(139, 195, 74, 0.25);
+  cursor: pointer;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
+/* Efecto hover en las barras */
+.chart-bar:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(139, 195, 74, 0.4);
+  filter: brightness(1.1);
+}
+
+/* Valor dentro de la barra */
 .bar-value {
+  font-weight: 700;
+  font-size: 1rem;
   color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 0.5px;
 }
 
+/* Etiqueta de fecha debajo de la barra */
 .bar-label {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #2d3748;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #334155;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
 
+/* Subetiqueta (cantidad de pedidos) */
 .bar-sublabel {
-  font-size: 0.7rem;
-  color: #718096;
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin-top: 0.375rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Información del rango de fechas */
+.chart-info {
+  margin-top: 1.5rem !important;
+  color: #64748b !important;
+  font-size: 0.9375rem !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+/* Indicador visual de scroll */
+.chart-scroll-indicator {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.chart-scroll-indicator::before {
+  content: "← ";
+}
+
+.chart-scroll-indicator::after {
+  content: " →";
 }
 
 /* Mensajes */
@@ -224,4 +482,100 @@
   padding: 3rem;
   font-size: 1.25rem;
   color: #4a5568;
+}
+
+/* Botones de Prueba - TEMPORAL */
+.test-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.test-button {
+  padding: 12px 24px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+}
+
+.test-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.test-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.test-button.generate {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.test-button.generate:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+.test-button.delete {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.test-button.delete:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chart-container {
+    height: 350px;
+    padding: 1.5rem 0.5rem 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .chart-bar-wrapper {
+    min-width: 50px;
+    max-width: 50px;
+  }
+  
+  .bar-value {
+    font-size: 0.875rem;
+  }
+  
+  .bar-label {
+    font-size: 0.8125rem;
+  }
+  
+  .grid-label {
+    display: none;
+  }
+  
+  .chart-grid-lines {
+    height: 350px;
+    padding: 1.5rem 0.5rem 3rem;
+  }
+  
+  .test-buttons {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    flex-direction: row;
+  }
+  
+  .test-button {
+    flex: 1;
+    min-width: auto;
+    font-size: 12px;
+    padding: 10px 16px;
+  }
 }
