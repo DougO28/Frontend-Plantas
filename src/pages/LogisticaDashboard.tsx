@@ -94,7 +94,7 @@ export default function LogisticaDashboard() {
         {estadisticas && (
           <div className="stats-grid">
             <div className="stat-card stat-warning">
-              <div className="stat-icon">📦</div>
+              <div className="stat-icon"></div>
               <div className="stat-content">
                 <h3>Pedidos Sin Asignar</h3>
                 <p className="stat-value">{estadisticas.pedidos_sin_asignar}</p>
@@ -102,7 +102,7 @@ export default function LogisticaDashboard() {
             </div>
 
             <div className="stat-card stat-info">
-              <div className="stat-icon">🚚</div>
+              <div className="stat-icon"></div>
               <div className="stat-content">
                 <h3>Rutas Activas</h3>
                 <p className="stat-value">{estadisticas.rutas_activas}</p>
@@ -110,7 +110,7 @@ export default function LogisticaDashboard() {
             </div>
 
             <div className="stat-card stat-success">
-              <div className="stat-icon">✅</div>
+              <div className="stat-icon"></div>
               <div className="stat-content">
                 <h3>Entregas Hoy</h3>
                 <p className="stat-value">{estadisticas.entregas_completadas_hoy}</p>
@@ -118,7 +118,7 @@ export default function LogisticaDashboard() {
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon">🚗</div>
+              <div className="stat-icon"></div>
               <div className="stat-content">
                 <h3>Vehículos Disponibles</h3>
                 <p className="stat-value">
@@ -146,7 +146,7 @@ export default function LogisticaDashboard() {
               className="action-card"
               onClick={() => navigate('/logistica/rutas')}
             >
-              <div className="action-icon">📋</div>
+              <div className="action-icon"></div>
               <h3>Ver Todas las Rutas</h3>
               <p>Gestionar rutas activas</p>
             </button>
@@ -155,7 +155,7 @@ export default function LogisticaDashboard() {
               className="action-card"
               onClick={() => navigate('/logistica/vehiculos')}
             >
-              <div className="action-icon">🚗</div>
+              <div className="action-icon"></div>
               <h3>Vehículos</h3>
               <p>Administrar flota</p>
             </button>
@@ -164,7 +164,7 @@ export default function LogisticaDashboard() {
               className="action-card"
               onClick={() => navigate('/pedidos?estado=listo_entrega')}
             >
-              <div className="action-icon">📦</div>
+              <div className="action-icon"></div>
               <h3>Pedidos Listos</h3>
               <p>Ver pedidos para asignar</p>
             </button>

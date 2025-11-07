@@ -461,7 +461,7 @@ export default function Dashboard() {
           disabled={loading}
           className="test-button generate"
         >
-          🧪 Generar Datos de Prueba
+           Generar Datos de Prueba
         </button>
         
         <button 
@@ -469,7 +469,7 @@ export default function Dashboard() {
           disabled={loading}
           className="test-button delete"
         >
-          🗑️ Eliminar Datos de Prueba
+           Eliminar Datos de Prueba
         </button>
       </div>
     </div>

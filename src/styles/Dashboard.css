@@ -520,19 +520,19 @@
 }
 
 .test-button.generate {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: linear-gradient(135deg, #118306, #118306);
 }
 
 .test-button.generate:hover:not(:disabled) {
-  background: linear-gradient(135deg, #d97706, #b45309);
+  background: linear-gradient(135deg, #118306, #118306);
 }
 
 .test-button.delete {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: linear-gradient(135deg, #118306, #118306);
 }
 
 .test-button.delete:hover:not(:disabled) {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  background: linear-gradient(135deg, #118306, #118306);
 }
 
 /* Responsive */

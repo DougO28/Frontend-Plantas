@@ -56,7 +56,7 @@ export default function ForgotPassword() {
         to_email: email,
         reset_code: resetCode,
       },
-      '6ZzdOia3VpMumzjDq' // ⬅️ Tu Public Key
+      '6ZzdOia3VpMumzjDq' //Public Key
     );
 
     setStep('code');
