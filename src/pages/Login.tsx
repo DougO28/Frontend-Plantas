@@ -11,6 +11,7 @@ interface LoginProps {
 export default function Login({ onLoginSuccess }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -38,24 +39,19 @@ export default function Login({ onLoginSuccess }: LoginProps) {
   return (
     <div className="login-page">
       <div className="login-card">
-        {/* Encabezado como la imagen 2 */}
         <div className="login-header">
-          {/* Cambia el src por tu logo si quieres */}
           <img
             className="login-logo"
             src="/images/logo-agriconecta.svg"
             alt="Agriconecta"
             onError={(e) => {
-              // Si no tienes logo, ocultamos la <img>
               (e.target as HTMLImageElement).style.display = 'none';
             }}
           />
           <h1 className="login-title">Ingresa a tu Cuenta</h1>
         </div>
 
-        {/* Contenido a dos columnas */}
         <div className="login-columns">
-          {/* Columna izquierda: Clientes Registrados */}
           <div className="login-col">
             <h3 className="col-title">Clientes Registrados</h3>
             <p className="col-subtitle">
@@ -72,43 +68,65 @@ export default function Login({ onLoginSuccess }: LoginProps) {
 
             <form onSubmit={handleSubmit} className="login-form">
               <div className="form-group">
-                <label htmlFor="email">Correo Electrónico <span className="req">*</span></label>
+                <label htmlFor="email">
+                  Correo Electrónico <span className="req">*</span>
+                </label>
                 <input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Correo electrónico"
+                  placeholder="correo@ejemplo.com"
                   required
                   disabled={loading}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Contraseña <span className="req">*</span></label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  required
-                  disabled={loading}
-                />
+                <label htmlFor="password">
+                  Contraseña <span className="req">*</span>
+                </label>
+                <div className="password-input-wrapper">
+                  <input
+                    id="password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    required
+                    disabled={loading}
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  >
+                    {showPassword ? 'ver' : '*'}
+                  </button>
+                </div>
               </div>
 
               <div className="form-options">
                 <label className="checkbox-label">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={showPassword}
+                    onChange={(e) => setShowPassword(e.target.checked)}
+                  />
                   <span>Ver contraseña</span>
                 </label>
-                <a href="#" className="forgot-password">
+                <button
+                  type="button"
+                  className="forgot-password"
+                  onClick={() => navigate('/forgot-password')}
+                >
                   ¿Olvidaste tu contraseña?
-                </a>
+                </button>
               </div>
 
               <button type="submit" className="btn-login" disabled={loading}>
-                {loading ? 'Iniciando sesión…' : 'Iniciar Sesión'}
+                {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
               </button>
 
               <p className="required-hint">
@@ -117,10 +135,8 @@ export default function Login({ onLoginSuccess }: LoginProps) {
             </form>
           </div>
 
-          {/* Separador vertical en desktop */}
           <div className="login-divider" aria-hidden="true" />
 
-          {/* Columna derecha: Crear cuenta */}
           <div className="login-col create-col">
             <h3 className="col-title">Crea tu Cuenta</h3>
             <p className="col-subtitle">
@@ -131,14 +147,10 @@ export default function Login({ onLoginSuccess }: LoginProps) {
             <button
               type="button"
               className="btn-secondary"
-              onClick={() => navigate('/registro')} // ajusta la ruta si cambia
+              onClick={() => navigate('/registro')}
             >
               Crear una Cuenta
             </button>
-
-            <p className="contact-hint">
-              ¿Tienes dudas? <a href="#">Contáctanos</a>
-            </p>
           </div>
         </div>
       </div>

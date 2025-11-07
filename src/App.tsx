@@ -4,6 +4,8 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
+import Register from './pages/Register';  
+import ForgotPassword from './pages/ForgotPassword';  
 import Home from './pages/Home';
 import PlantList from './pages/PlantList';
 import OrderList from './pages/OrderList';
@@ -17,8 +19,10 @@ function App() {
       <CartProvider>
         <BrowserRouter>
           <Routes>
-            {/* Ruta pública */}
+            {/* Rutas públicas */}
             <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Register />} /> 
+            <Route path="/forgot-password" element={<ForgotPassword />} />  
 
             {/* Rutas protegidas */}
             <Route

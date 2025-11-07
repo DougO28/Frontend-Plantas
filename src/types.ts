@@ -210,3 +210,26 @@ export interface PaginatedResponse<T> {
   previous: string | null;
   results: T[];
 }
+
+// Agregar esta interfaz a tu archivo de types
+export interface RegisterData {
+  nombre_completo: string;
+  email: string;
+  telefono: string;
+  password: string;
+  confirm_password: string;
+  direccion?: string;
+  municipio?: number;
+}
+
+// Y actualizar AuthContextType para incluir register
+export interface AuthContextType {
+  user: Usuario | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (userData: RegisterData) => Promise<any>; // AGREGAR ESTA LÍNEA
+  logout: () => void;
+  refreshToken: () => Promise<void>;
+}

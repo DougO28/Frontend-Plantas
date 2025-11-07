@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { authService } from '../api/authService';
-import type { Usuario, AuthContextType } from '../types';
+import type { Usuario, AuthContextType, RegisterData } from '../types';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -44,6 +44,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  const register = async (userData: RegisterData) => {
+    try {
+      const response = await authService.register(userData);
+      return response;
+    } catch (error) {
+      console.error('Error en registro:', error);
+      throw error;
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
@@ -72,6 +82,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     isAuthenticated: !!token && !!user,
     isLoading,
     login,
+    register,  
     logout,
     refreshToken,
   };

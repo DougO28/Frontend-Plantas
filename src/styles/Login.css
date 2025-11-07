@@ -290,3 +290,40 @@
   font-weight: 700;
   color: white;
 }
+
+/* Agregar al final de Login.css */
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 45px;
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #718096;
+  transition: color 0.2s;
+}
+
+.password-toggle:hover {
+  color: #8BC34A;
+}
+
+.password-toggle:focus {
+  outline: 2px solid #8BC34A;
+  border-radius: 4px;
+}

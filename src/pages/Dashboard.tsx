@@ -151,11 +151,11 @@ export default function Dashboard() {
     try {
       setLoading(true);
       const response = await axiosInstance.delete('/test/generar-datos/');
-      alert(`✅ ${response.data.mensaje}`);
+      alert(` ${response.data.mensaje}`);
       await loadStats();
     } catch (err: any) {
       console.error('Error:', err);
-      alert('❌ Error al eliminar datos de prueba');
+      alert('X Error al eliminar datos de prueba');
     } finally {
       setLoading(false);
     }
@@ -199,37 +199,38 @@ export default function Dashboard() {
             onClick={() => handleFiltroChange('ultimos_7_dias')}
             disabled={loading}
           >
-            📅 Últimos 7 días
+             Últimos 7 días
           </button>
           <button
             className={`filter-btn ${filtroActual === 'ultimos_30_dias' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('ultimos_30_dias')}
             disabled={loading}
           >
-            📅 Últimos 30 días
+             Últimos 30 días
           </button>
           <button
             className={`filter-btn ${filtroActual === 'este_mes' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('este_mes')}
             disabled={loading}
           >
-            📅 Este mes
+             Este mes
           </button>
           <button
             className={`filter-btn ${filtroActual === 'mes_pasado' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('mes_pasado')}
             disabled={loading}
           >
-            📅 Mes pasado
+             Mes pasado
           </button>
           <button
             className={`filter-btn ${filtroActual === 'personalizado' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('personalizado')}
             disabled={loading}
           >
-            📅 Personalizado
+             Personalizado
           </button>
         </div>
+      
         
         {/* Filtro personalizado */}
         {filtroActual === 'personalizado' && (
@@ -257,13 +258,15 @@ export default function Dashboard() {
               Aplicar
             </button>
           </div>
+        
         )}
         
         {/* Botón de exportar */}
         <button onClick={exportarExcel} className="export-btn" disabled={loading}>
-          📊 Exportar a Excel
+          <img src="images/Excel.png" alt="Excel" className="export-icon" />
+          Exportar a Excel
         </button>
-      </div>
+        </div>
       
       <div className="stats-grid">
         <div className="stat-card">
@@ -351,6 +354,7 @@ export default function Dashboard() {
                     </span>
                   </td>
                 </tr>
+                
               ))}
             </tbody>
           </table>
@@ -359,7 +363,7 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* ✅ SECCIÓN DE GRÁFICA CON LÍNEAS DE REFERENCIA */}
+      {/*SECCIÓN DE GRÁFICA CON LÍNEAS DE REFERENCIA */}
       <div className="section">
       <h2>
         {filtroActual === 'ultimos_7_dias' && 'Ventas de los Últimos 7 Días'}
@@ -369,7 +373,7 @@ export default function Dashboard() {
         {filtroActual === 'personalizado' && 'Ventas del Período Seleccionado'}
       </h2>
       
-      {/* ✅ Wrapper con clase condicional */}
+      {/*  Wrapper con clase condicional */}
       <div className={`chart-scroll-wrapper ${stats.ventas_diarias && stats.ventas_diarias.length <= 7 ? 'no-scroll' : ''}`}>
         <div className="chart-wrapper">
           {/* Líneas de referencia */}
@@ -380,18 +384,18 @@ export default function Dashboard() {
             <div className="grid-line"><span className="grid-label">25%</span></div>
           </div>
           
-          {/* ✅ Gráfica con clase condicional */}
+          {/*  Gráfica con clase condicional */}
           <div className={`chart-container ${stats.ventas_diarias && stats.ventas_diarias.length <= 7 ? 'few-days' : ''}`}>
           {stats.ventas_diarias && stats.ventas_diarias.length > 0 ? (
             (() => {
-              // ✅ CALCULAR EL MÁXIMO UNA SOLA VEZ FUERA DEL MAP
+              //  CALCULAR EL MÁXIMO UNA SOLA VEZ FUERA DEL MAP
               const maxVentaReal = Math.max(...stats.ventas_diarias.map(d => d.total), 1);
               const maxVenta = maxVentaReal * 1.15;
               
               
               
               return stats.ventas_diarias.map((dia) => {
-                // ✅ Calcular altura proporcional
+                //  Calcular altura proporcional
                 const altura = (dia.total / maxVenta) * 100;
                 const alturaFinal = dia.cantidad_pedidos > 0 ? Math.max(altura, 8) : 5;
                 
@@ -402,7 +406,7 @@ export default function Dashboard() {
                     <div 
                       className="chart-bar" 
                       style={{ 
-                        height: `${alturaFinal}%`,  // ✅ ESTO ES CRÍTICO
+                        height: `${alturaFinal}%`,  //Ajuste de altura minima
                         background: dia.cantidad_pedidos > 0 
                           ? 'linear-gradient(135deg, #8BC34A, #689F38)' 
                           : '#e2e8f0'
@@ -432,7 +436,7 @@ export default function Dashboard() {
         </div>
       </div>
       
-      {/* ✅ Indicador solo si hay más de 10 días */}
+      {/*  Indicador solo si hay más de 10 días */}
       {stats.ventas_diarias && stats.ventas_diarias.length > 10 && (
         <p className="chart-scroll-indicator">
           Desliza para ver más datos
