@@ -10,7 +10,16 @@ import Home from './pages/Home';
 import PlantList from './pages/PlantList';
 import OrderList from './pages/OrderList';
 import CreateOrder from './pages/CreateOrder';
-import Dashboard from './pages/Dashboard';  
+import Dashboard from './pages/Dashboard';
+
+// ✅ Logística
+import LogisticaDashboard from './pages/LogisticaDashboard';
+import ListaRutas from './pages/ListaRutas';
+import CrearRuta from './pages/CrearRuta';
+import DetalleRuta from './pages/DetalleRuta';
+import GestionVehiculos from './pages/GestionVehiculos';
+import PedidosListos from './pages/PedidosListos';
+
 import './App.css';
 
 function App() {
@@ -66,6 +75,64 @@ function App() {
               element={
                 <ProtectedRoute>
                   <CreateOrder />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ✅ LOGÍSTICA - Dashboard Principal */}
+            <Route
+              path="/logistica"
+              element={
+                <ProtectedRoute>
+                  <LogisticaDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ✅ LOGÍSTICA - Rutas */}
+            <Route
+              path="/logistica/rutas"
+              element={
+                <ProtectedRoute>
+                  <ListaRutas />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/logistica/rutas/nueva"
+              element={
+                <ProtectedRoute>
+                  <CrearRuta />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/logistica/rutas/:id"
+              element={
+                <ProtectedRoute>
+                  <DetalleRuta />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ✅ LOGÍSTICA - Vehículos */}
+            <Route
+              path="/logistica/vehiculos"
+              element={
+                <ProtectedRoute>
+                  <GestionVehiculos />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ✅ LOGÍSTICA - Pedidos Listos */}
+            <Route
+              path="/logistica/pedidos-listos"
+              element={
+                <ProtectedRoute>
+                  <PedidosListos />
                 </ProtectedRoute>
               }
             />

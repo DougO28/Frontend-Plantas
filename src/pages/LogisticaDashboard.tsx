@@ -137,7 +137,7 @@ export default function LogisticaDashboard() {
               className="action-card"
               onClick={() => navigate('/logistica/rutas/nueva')}
             >
-              <div className="action-icon">➕</div>
+              <div className="action-icon"></div>
               <h3>Crear Ruta</h3>
               <p>Asignar pedidos a vehículos</p>
             </button>

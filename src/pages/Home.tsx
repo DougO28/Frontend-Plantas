@@ -40,7 +40,8 @@ export default function Home() {
             <p>Ver estadísticas y métricas del sistema</p>
           </div>
 
-          <div className="card">
+          
+          <div className="card" onClick={() => navigate('/logistica')}>
             <div className="card-icon">
               <img src="/images/camion.png" alt="Logística" />
             </div>

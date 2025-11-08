@@ -177,7 +177,7 @@
     font-size: 13px;
   }
 }
-/* src/styles/Navbar.css */
+
 
 .nav-brand-container {
   display: flex;
@@ -192,7 +192,7 @@
 }
 
 .nav-logo {
-  height: 40px;  /* Ajusta según tu logo */
+  height: 40px;  
   width: auto;
 }
 
@@ -202,10 +202,10 @@
   color: white;
 }
 
-/* src/styles/Navbar.css */
+
 
 .cart-btn {
-  background: transparent;  /* ✅ Quitar fondo verde */
+  background: transparent;  
   border: none;
   color: white;
   padding: 0.5rem;
@@ -220,12 +220,12 @@
 }
 
 .cart-btn:hover {
-  background: rgba(255, 255, 255, 0.1);  /* ✅ Efecto hover sutil */
+  background: rgba(255, 255, 255, 0.1);  
   transform: scale(1.05);
 }
 
 .cart-icon {
-  width: 28px;   /* ✅ Ajusta el tamaño según tu icono */
+  width: 28px;   
   height: 28px;
   object-fit: contain;
   

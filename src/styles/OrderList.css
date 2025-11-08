@@ -15,7 +15,7 @@
 
 .btn-new-order {
   padding: 12px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #118306 0%, #118306 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -94,9 +94,9 @@
 }
 
 .filter-btn.active {
-  background: #667eea;
+  background: #118306;
   color: white;
-  border-color: #667eea;
+  border-color: #118306;
 }
 
 .filter-count {
@@ -212,12 +212,12 @@
 
 .badge-shipped {
   background: #f3e8ff;
-  color: #9333ea;
+  color: #118306;
 }
 
 .badge-transit {
   background: #ddd6fe;
-  color: #7c3aed;
+  color: #118306;
 }
 
 .badge-success {
@@ -473,29 +473,29 @@
 }
 
 .btn-details {
-  background: #667eea;
+  background: #118306;
   color: white;
 }
-
+/*ver Detalles*/
 .btn-details:hover {
-  background: #5568d3;
+  background: #118306;
   transform: translateY(-2px);
 }
 
 .btn-rate {
-  background: #f59e0b;
+  background: #118306;
   color: white;
 }
 
 .btn-rate:hover {
-  background: #d97706;
+  background: #17b409;
   transform: translateY(-2px);
 }
 
 .btn-cancel {
   background: white;
-  color: #dc2626;
-  border: 2px solid #dc2626;
+  color: #118306;
+  border: 2px solid #118306;
 }
 
 .btn-cancel:hover {

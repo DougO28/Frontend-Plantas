@@ -17,27 +17,31 @@ export default function Navbar() {
   const cartItemsCount = getTotalItems();
 
   return (
-  <nav className="navbar">
-    <div className="nav-content">
-      <div className="nav-brand-container" onClick={() => navigate('/')}>
-        <img src="/images/Agriconecta.png" alt="Logo" className="nav-logo" />
-        <h1>Plantas Agriconecta</h1>
-      </div>
-      
-      <div className="nav-links">
-        <button onClick={() => navigate('/')} className="nav-link">
-          Inicio
-        </button>
-        <button onClick={() => navigate('/dashboard')} className="nav-link">  
-          Dashboard
-        </button>
-        <button onClick={() => navigate('/plantas')} className="nav-link">
-          Plantas
-        </button>
-        <button onClick={() => navigate('/pedidos')} className="nav-link">
-          Pedidos
-        </button>
-      </div>
+    <nav className="navbar">
+      <div className="nav-content">
+        <div className="nav-brand-container" onClick={() => navigate('/')}>
+          <img src="/images/Agriconecta.png" alt="Logo" className="nav-logo" />
+          <h1>Plantas Agriconecta</h1>
+        </div>
+        
+        <div className="nav-links">
+          <button onClick={() => navigate('/')} className="nav-link">
+            Inicio
+          </button>
+          <button onClick={() => navigate('/dashboard')} className="nav-link">  
+            Dashboard
+          </button>
+          <button onClick={() => navigate('/plantas')} className="nav-link">
+            Plantas
+          </button>
+          <button onClick={() => navigate('/pedidos')} className="nav-link">
+            Pedidos
+          </button>
+          {/*  NUEVO: Enlace a Logística */}
+          <button onClick={() => navigate('/logistica')} className="nav-link">
+            Logística
+          </button>
+        </div>
 
         <div className="nav-right">
           {/* Botón del carrito */}
