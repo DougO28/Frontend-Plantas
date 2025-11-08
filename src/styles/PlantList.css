@@ -460,9 +460,9 @@
 }
 
 .placeholder-icon {
-  width: 100px;   /* ✅ Ajusta el tamaño según tu icono */
+  width: 100px;   
   height: 100px;
   object-fit: contain;
-  opacity: 0.7;  /* ✅ Opacidad para que se vea como placeholder */
+  opacity: 0.7;  
 }
 
