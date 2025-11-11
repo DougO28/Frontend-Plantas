@@ -1,10 +1,11 @@
-// src/api/axiosConfig.ts
+// Frontend/src/api/axiosConfig.ts
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE || 'http://127.0.0.1:8000';
+// ✅ Usar variable de entorno
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
 const axiosInstance = axios.create({
-  baseURL: `${API_BASE_URL}/api`,
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -38,7 +39,8 @@ axiosInstance.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refresh_token');
         if (refreshToken) {
-          const response = await axios.post(`${API_BASE_URL}/api/auth/refresh/`, {
+          // ✅ Usar la misma variable de entorno
+          const response = await axios.post(`${API_BASE_URL.replace('/api', '')}/api/auth/refresh/`, {
             refresh: refreshToken,
           });
 
