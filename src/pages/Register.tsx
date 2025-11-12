@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { ubicacionService } from '../api/ubicacionService'; // ✅ Importar el servicio
 import '../styles/Register.css';
 
 interface Departamento {
@@ -40,17 +41,14 @@ export default function Register() {
   const navigate = useNavigate();
   const { register } = useAuth();
 
-  // Cargar departamentos y municipios
+  // ✅ Cargar departamentos y municipios usando el servicio correcto
   useEffect(() => {
     const fetchUbicaciones = async () => {
       try {
-        const [deptosRes, muniRes] = await Promise.all([
-          fetch('http://localhost:8000/api/departamentos/'),
-          fetch('http://localhost:8000/api/municipios/'),
+        const [deptosData, muniData] = await Promise.all([
+          ubicacionService.getDepartamentos(),
+          ubicacionService.getMunicipios(),
         ]);
-
-        const deptosData = await deptosRes.json();
-        const muniData = await muniRes.json();
 
         setDepartamentos(deptosData);
         setMunicipios(muniData);
@@ -166,7 +164,7 @@ export default function Register() {
 
         {error && (
           <div className="alert alert-error">
-            <span className="alert-icon">⚠</span>
+            <span className="alert-icon">⚠ </span>
             {error}
           </div>
         )}
