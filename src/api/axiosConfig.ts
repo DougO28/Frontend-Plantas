@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000,
+  timeout: 20000,
 });
 
 // Interceptor para agregar el token a cada petición
