@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ubicacionService } from '../api/ubicacionService'; // ✅ Importar el servicio
+import { ubicacionService } from '../api/ubicacionService'; //  Importar el servicio
 import '../styles/Register.css';
 
 interface Departamento {
@@ -41,7 +41,7 @@ export default function Register() {
   const navigate = useNavigate();
   const { register } = useAuth();
 
-  // ✅ Cargar departamentos y municipios usando el servicio correcto
+  //  Cargar departamentos y municipios usando el servicio correcto
   useEffect(() => {
     const fetchUbicaciones = async () => {
       try {
