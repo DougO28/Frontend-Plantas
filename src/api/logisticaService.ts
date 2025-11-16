@@ -141,7 +141,7 @@ export interface Pedido {
 }
 
 export const logisticaService = {
-  // ============= RUTAS =============
+  // RUTAS 
   getRutas: async (filtros?: { estado?: string; departamento?: number }): Promise<RutaEntrega[]> => {
     const params = new URLSearchParams();
     if (filtros?.estado) params.append('estado', filtros.estado);
@@ -180,7 +180,7 @@ export const logisticaService = {
     return response.data;
   },
 
-  // ============= VEHÍCULOS =============
+  //  VEHÍCULOS 
   getVehiculos: async (): Promise<Vehiculo[]> => {
     const response = await axiosInstance.get<Vehiculo[]>('/vehiculos/');
     return response.data;
@@ -205,31 +205,31 @@ export const logisticaService = {
     await axiosInstance.delete(`/vehiculos/${id}/`);
   },
 
-  // ============= TRANSPORTISTAS =============
+  // TRANSPORTISTAS 
   getTransportistas: async (): Promise<Transportista[]> => {
     const response = await axiosInstance.get<Transportista[]>('/transportistas/');
     return response.data;
   },
 
-  // ============= PUNTOS DE SIEMBRA =============
+  // PUNTOS DE SIEMBRA 
   getPuntosSiembra: async (): Promise<PuntoSiembra[]> => {
     const response = await axiosInstance.get<PuntoSiembra[]>('/puntos-siembra/');
     return response.data;
   },
 
-  // ============= FINCAS =============
+  //  FINCAS 
   getFincas: async (): Promise<Finca[]> => {
     const response = await axiosInstance.get<Finca[]>('/fincas/');
     return response.data;
   },
 
-  // ============= ESTADÍSTICAS =============
+  //  ESTADÍSTICAS 
   getEstadisticas: async (): Promise<EstadisticasLogistica> => {
     const response = await axiosInstance.get<EstadisticasLogistica>('/rutas/estadisticas/');
     return response.data;
   },
 
-  // ============= PEDIDOS =============
+  // PEDIDOS 
   getPedidosDisponibles: async (): Promise<Pedido[]> => {
     const response = await axiosInstance.get<Pedido[]>('/pedidos/?estado=listo_entrega');
     return response.data;

@@ -11,7 +11,7 @@ import '../styles/CreateOrder.css';
 export default function CreateOrder() {
   const navigate = useNavigate();
   const { items, removeItem, updateQuantity, clearCart, getTotalPrice } = useCart();
-//              ^^^^^^^^^^  ^^^^^^^^^^^^^^ AGREGAR ESTOS
+
   
 
   // Estados para ubicaciones

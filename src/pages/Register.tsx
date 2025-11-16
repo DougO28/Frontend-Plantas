@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ubicacionService } from '../api/ubicacionService'; //  Importar el servicio
+import { ubicacionService } from '../api/ubicacionService';
 import '../styles/Register.css';
 
 interface Departamento {
@@ -37,13 +37,15 @@ export default function Register() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingUbicaciones, setLoadingUbicaciones] = useState(true);
   
   const navigate = useNavigate();
   const { register } = useAuth();
 
-  //  Cargar departamentos y municipios usando el servicio correcto
+  // Cargar departamentos y municipios con mejor manejo de errores
   useEffect(() => {
     const fetchUbicaciones = async () => {
+      setLoadingUbicaciones(true);
       try {
         const [deptosData, muniData] = await Promise.all([
           ubicacionService.getDepartamentos(),
@@ -52,8 +54,11 @@ export default function Register() {
 
         setDepartamentos(deptosData);
         setMunicipios(muniData);
-      } catch (err) {
+      } catch (err: any) {
         console.error('Error cargando ubicaciones:', err);
+        setError('Error al cargar las ubicaciones. Por favor, recarga la página.');
+      } finally {
+        setLoadingUbicaciones(false);
       }
     };
 
@@ -75,21 +80,57 @@ export default function Register() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Limpiar error cuando el usuario empiece a escribir
+    if (error) setError('');
   };
 
   const handleDepartamentoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDepartamento(e.target.value);
     setFormData((prev) => ({ ...prev, municipio: '' }));
+    if (error) setError('');
   };
 
   const validateForm = () => {
-    if (formData.password !== formData.confirm_password) {
-      setError('Las contraseñas no coinciden');
+    // Validar campos requeridos
+    if (!formData.nombre_completo.trim()) {
+      setError('El nombre completo es requerido');
+      return false;
+    }
+
+    if (!formData.email.trim()) {
+      setError('El correo electrónico es requerido');
+      return false;
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError('Ingresa un correo electrónico válido');
+      return false;
+    }
+
+    if (!formData.telefono.trim()) {
+      setError('El teléfono es requerido');
+      return false;
+    }
+
+    if (!formData.password) {
+      setError('La contraseña es requerida');
       return false;
     }
 
     if (formData.password.length < 8) {
       setError('La contraseña debe tener al menos 8 caracteres');
+      return false;
+    }
+
+    if (formData.password !== formData.confirm_password) {
+      setError('Las contraseñas no coinciden');
+      return false;
+    }
+
+    if (!selectedDepartamento) {
+      setError('Debes seleccionar un departamento');
       return false;
     }
 
@@ -111,12 +152,12 @@ export default function Register() {
 
     try {
       await register({
-        nombre_completo: formData.nombre_completo,
-        email: formData.email,
-        telefono: formData.telefono,
+        nombre_completo: formData.nombre_completo.trim(),
+        email: formData.email.trim().toLowerCase(),
+        telefono: formData.telefono.trim(),
         password: formData.password,
         confirm_password: formData.confirm_password,
-        direccion: formData.direccion,
+        direccion: formData.direccion.trim(),
         municipio: parseInt(formData.municipio),
       });
 
@@ -128,9 +169,36 @@ export default function Register() {
       }, 2000);
 
     } catch (err: any) {
-      const errorMsg = err?.response?.data?.detail || 
-                      err?.response?.data?.email?.[0] ||
-                      'Error al registrar usuario. Intenta nuevamente.';
+      console.error('Error en registro:', err);
+      
+      // Manejo mejorado de errores
+      let errorMsg = 'Error al registrar usuario. Intenta nuevamente.';
+      
+      if (err?.response?.data) {
+        const data = err.response.data;
+        
+        // Manejar errores específicos del backend
+        if (data.email) {
+          errorMsg = Array.isArray(data.email) ? data.email[0] : 'Este correo ya está registrado';
+        } else if (data.telefono) {
+          errorMsg = Array.isArray(data.telefono) ? data.telefono[0] : 'Este teléfono ya está registrado';
+        } else if (data.detail) {
+          errorMsg = data.detail;
+        } else if (data.message) {
+          errorMsg = data.message;
+        } else if (typeof data === 'string') {
+          errorMsg = data;
+        }
+      } else if (err?.message) {
+        if (err.message.includes('timeout')) {
+          errorMsg = 'La solicitud está tomando más tiempo de lo esperado. Por favor, intenta de nuevo.';
+        } else if (err.message.includes('Network Error')) {
+          errorMsg = 'Error de conexión. Verifica tu internet e intenta nuevamente.';
+        } else {
+          errorMsg = err.message;
+        }
+      }
+      
       setError(errorMsg);
     } finally {
       setLoading(false);
@@ -169,6 +237,13 @@ export default function Register() {
           </div>
         )}
 
+        {loadingUbicaciones && (
+          <div className="alert alert-info">
+            <span className="alert-icon">ℹ </span>
+            Cargando ubicaciones...
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="register-form">
           {/* Información Personal */}
           <div className="form-section">
@@ -187,6 +262,7 @@ export default function Register() {
                 placeholder="Juan Pérez"
                 required
                 disabled={loading}
+                autoComplete="name"
               />
             </div>
 
@@ -204,6 +280,7 @@ export default function Register() {
                   placeholder="correo@ejemplo.com"
                   required
                   disabled={loading}
+                  autoComplete="email"
                 />
               </div>
 
@@ -220,6 +297,7 @@ export default function Register() {
                   placeholder="1234-5678"
                   required
                   disabled={loading}
+                  autoComplete="tel"
                 />
               </div>
             </div>
@@ -239,7 +317,7 @@ export default function Register() {
                   value={selectedDepartamento}
                   onChange={handleDepartamentoChange}
                   required
-                  disabled={loading}
+                  disabled={loading || loadingUbicaciones}
                 >
                   <option value="">Selecciona un departamento</option>
                   {departamentos.map((dept) => (
@@ -260,9 +338,11 @@ export default function Register() {
                   value={formData.municipio}
                   onChange={handleChange}
                   required
-                  disabled={loading || !selectedDepartamento}
+                  disabled={loading || loadingUbicaciones || !selectedDepartamento}
                 >
-                  <option value="">Selecciona un municipio</option>
+                  <option value="">
+                    {selectedDepartamento ? 'Selecciona un municipio' : 'Primero selecciona un departamento'}
+                  </option>
                   {municipiosFiltrados.map((muni) => (
                     <option key={muni.id} value={muni.id}>
                       {muni.nombre}
@@ -282,6 +362,7 @@ export default function Register() {
                 onChange={handleChange}
                 placeholder="Zona 10, 5ta Avenida"
                 disabled={loading}
+                autoComplete="street-address"
               />
             </div>
           </div>
@@ -305,14 +386,16 @@ export default function Register() {
                   required
                   disabled={loading}
                   minLength={8}
+                  autoComplete="new-password"
                 />
                 <button
                   type="button"
                   className="password-toggle"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  tabIndex={-1}
                 >
-                  {showPassword ? 'ver' : '*'}
+                  {showPassword ? '👁️' : '👁️‍🗨️'}
                 </button>
               </div>
             </div>
@@ -332,14 +415,16 @@ export default function Register() {
                   required
                   disabled={loading}
                   minLength={8}
+                  autoComplete="new-password"
                 />
                 <button
                   type="button"
                   className="password-toggle"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   aria-label={showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  tabIndex={-1}
                 >
-                  {showConfirmPassword ? 'ver' : '*'}
+                  {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
                 </button>
               </div>
             </div>
@@ -358,7 +443,7 @@ export default function Register() {
             >
               Cancelar
             </button>
-            <button type="submit" className="btn-primary" disabled={loading}>
+            <button type="submit" className="btn-primary" disabled={loading || loadingUbicaciones}>
               {loading ? 'Registrando...' : 'Crear Cuenta'}
             </button>
           </div>
