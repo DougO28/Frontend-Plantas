@@ -1,4 +1,4 @@
-// src/context/AuthContext.tsx
+// AuthContext
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { authService } from '../api/authService';

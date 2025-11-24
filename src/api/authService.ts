@@ -1,4 +1,4 @@
-// src/api/authService.ts
+// authService
 import axiosInstance from './axiosConfig';
 import type { LoginRequest, LoginResponse, Usuario, RegisterData } from '../types';
 

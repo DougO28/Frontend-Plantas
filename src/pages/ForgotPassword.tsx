@@ -50,7 +50,7 @@ export default function ForgotPassword() {
     // Enviar correo con EmailJS
     await emailjs.send(
       'service_yit3dwb',
-      'template_6yuwmuy', // Template template_6yuwmuy'
+      'template_6yuwmuy', // Template'
       {
         user_name: user.nombre_completo,
         to_email: email,
@@ -118,7 +118,7 @@ const handleResetPassword = async (e: React.FormEvent) => {
       );
     } catch (emailError) {
       console.log('Error enviando email de confirmación:', emailError);
-      // No detenemos el flujo si falla el email
+      // No detiene el flujo si falla el email
     }
 
     setSuccess(true);
@@ -263,7 +263,7 @@ const handleResetPassword = async (e: React.FormEvent) => {
                   className="password-toggle"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? '👁️' : '👁️‍🗨️'}
+                  {showPassword ? 'ver' : '*'}
                 </button>
               </div>
             </div>
@@ -288,7 +288,7 @@ const handleResetPassword = async (e: React.FormEvent) => {
                   className="password-toggle"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
-                  {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
+                  {showConfirmPassword ? 'ver' : '*'}
                 </button>
               </div>
             </div>

@@ -1,4 +1,4 @@
-// src/pages/Register.tsx
+//Register
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -103,7 +103,7 @@ export default function Register() {
     }
 
     // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  //regex simple para correos
     if (!emailRegex.test(formData.email)) {
       setError('Ingresa un correo electrónico válido');
       return false;
@@ -177,7 +177,7 @@ export default function Register() {
       if (err?.response?.data) {
         const data = err.response.data;
         
-        // Manejar errores específicos del backend
+        // Manejar errores  del backend
         if (data.email) {
           errorMsg = Array.isArray(data.email) ? data.email[0] : 'Este correo ya está registrado';
         } else if (data.telefono) {

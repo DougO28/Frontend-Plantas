@@ -1,4 +1,4 @@
-// src/pages/OrderList.tsx
+// OrderList.tsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { pedidoService } from '../api/pedidoService';
@@ -340,7 +340,7 @@ export default function OrderList() {
           </>
         )}
 
-        {/* ✅ MODAL: VER DETALLES */}
+        {/* MODAL VER DETALLES */}
         {showDetalleModal && pedidoSeleccionado && (
           <div className="modal-overlay" onClick={() => setShowDetalleModal(false)}>
             <div className="modal-content modal-large" onClick={(e) => e.stopPropagation()}>

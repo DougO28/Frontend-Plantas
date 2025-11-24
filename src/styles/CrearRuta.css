@@ -1,4 +1,4 @@
-/* Frontend/src/styles/CrearRuta.css */
+/* CrearRuta */
 .crear-ruta-container {
   min-height: 100vh;
   background-color: #f7fafc;
@@ -383,7 +383,7 @@
   transform: none;
 }
 
-/* Loading y Alerts */
+/* Loading y Alertas */
 .loading {
   text-align: center;
   padding: 3rem;

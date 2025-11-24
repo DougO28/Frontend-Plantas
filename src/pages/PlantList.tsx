@@ -1,4 +1,4 @@
-// src/pages/PlantList.tsx
+// PlantList
 import { useState, useEffect } from 'react';
 import { catalogoService } from '../api/catalogoService';
 import { useCart } from '../context/CartContext';

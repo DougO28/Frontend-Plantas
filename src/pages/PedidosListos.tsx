@@ -1,4 +1,4 @@
-// Frontend/src/pages/PedidosListos.tsx
+// PedidosListos
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logisticaService, type Pedido } from '../api/logisticaService';
@@ -83,7 +83,7 @@ export default function PedidosListos() {
             className="btn-primary"
             disabled={selectedPedidos.size === 0}
           >
-            🚚 Crear Ruta con Seleccionados ({selectedPedidos.size})
+             Crear Ruta con Seleccionados ({selectedPedidos.size})
           </button>
         </div>
 

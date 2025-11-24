@@ -1,4 +1,4 @@
-// Frontend/src/api/logisticaService.ts
+// logisticaService
 import axiosInstance from './axiosConfig';
 
 export interface Vehiculo {

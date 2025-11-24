@@ -1,4 +1,4 @@
-// src/api/pedidoService.ts
+//pedidoService
 import axiosInstance from './axiosConfig';
 import type { Pedido, CreatePedidoRequest, PaginatedResponse } from '../types';
 

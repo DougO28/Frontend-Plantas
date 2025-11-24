@@ -1,4 +1,4 @@
-// src/components/Footer.tsx
+//Footer
 import '../styles/Footer.css';
 
 export default function Footer() {

@@ -1,4 +1,4 @@
-// src/api/catalogoService.ts
+//catalogoService
 import axiosInstance from './axiosConfig';
 import type { CatalogoPilon, CategoriaPlanta, PaginatedResponse } from '../types';
 

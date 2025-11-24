@@ -171,7 +171,7 @@ const handleQuantityChange = (plantaId: number, newQuantity: number) => {
       await pedidoService.createPedido(pedidoData);
       
       clearCart();
-      alert('✅ Pedido creado exitosamente');
+      alert(' Pedido creado exitosamente');
       navigate('/pedidos');
     } catch (err: any) {
       console.error('Error creando pedido:', err);
@@ -402,7 +402,7 @@ const handleQuantityChange = (plantaId: number, newQuantity: number) => {
                       <option value="transferencia">Transferencia Bancaria</option>
                       <option value="contra_entrega">Pago Contra Entrega</option>
                       <option value="efectivo">Efectivo</option>
-                      <option value="tarjeta">Tarjeta</option>
+                    
                     </select>
                   </div>
 

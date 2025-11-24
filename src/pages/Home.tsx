@@ -1,4 +1,4 @@
-// src/pages/Home.tsx
+// Home.tsx
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import '../styles/Home.css';

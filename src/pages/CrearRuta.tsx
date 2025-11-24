@@ -90,7 +90,7 @@ export default function CrearRuta() {
       
       // Filtrar solo técnicos de campo y personal de vivero
       const tecnicosData = usuariosResponse.data.filter((u: Usuario) => 
-        u.email.includes('@') // Filtro simple, ajusta según tus necesidades
+        u.email.includes('@') // Filtro simple, ajustar según necesidades
       );
       setTecnicos(tecnicosData);
       

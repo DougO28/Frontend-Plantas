@@ -1,4 +1,4 @@
-// src/api/dashboardService.ts
+//dashboardService
 import axiosInstance from './axiosConfig';
 
 export interface VentasStats {

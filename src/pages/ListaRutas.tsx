@@ -1,4 +1,4 @@
-// Frontend/src/pages/ListaRutas.tsx
+// ListaRutas.tsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logisticaService, type RutaEntrega } from '../api/logisticaService';

@@ -1,4 +1,4 @@
-// src/api/ubicacionService.ts
+//ubicacionService
 import axiosInstance from './axiosConfig';
 import type { Departamento, Municipio } from '../types';
 

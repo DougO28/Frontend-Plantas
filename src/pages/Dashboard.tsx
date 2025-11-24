@@ -22,7 +22,7 @@ export default function Dashboard() {
     try {
       setLoading(true);
       
-      // Construir URL con parámetros de filtro
+      // Construir URL con parametros de filtro
       const params = new URLSearchParams();
       
       const filtroParam = filtro || filtroActual;
@@ -74,12 +74,12 @@ export default function Dashboard() {
   const handleFiltroPersonalizado = () => {
     if (fechaInicio && fechaFin) {
       if (fechaInicio > fechaFin) {
-        alert('❌ La fecha de inicio no puede ser mayor que la fecha de fin');
+        alert('⚠️ La fecha de inicio no puede ser mayor que la fecha de fin');
         return;
       }
       loadStats('personalizado', fechaInicio, fechaFin);
     } else {
-      alert('❌ Selecciona ambas fechas');
+      alert('⚠️ Selecciona ambas fechas');
     }
   };
 
@@ -124,7 +124,7 @@ export default function Dashboard() {
   };
 
   // Función para generar datos de prueba
-  const generarDatosPrueba = async () => {
+  /* const generarDatosPrueba = async () => {
     if (!window.confirm('⚠️ ¿Generar datos de prueba para los últimos 7 días?\n\nEsto creará pedidos ficticios para probar el dashboard.')) {
       return;
     }
@@ -140,10 +140,10 @@ export default function Dashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   // Función para eliminar datos de prueba
-  const eliminarDatosPrueba = async () => {
+  /* const eliminarDatosPrueba = async () => {
     if (!window.confirm('⚠️ ¿Eliminar TODOS los pedidos de prueba?\n\nEsta acción no se puede deshacer.')) {
       return;
     }
@@ -151,7 +151,7 @@ export default function Dashboard() {
     try {
       setLoading(true);
       const response = await axiosInstance.delete('/test/generar-datos/');
-      alert(` ${response.data.mensaje}`);
+      alert(`✅ ${response.data.mensaje}`);
       await loadStats();
     } catch (err: any) {
       console.error('Error:', err);
@@ -159,7 +159,7 @@ export default function Dashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   if (loading && !stats) {
     return (
@@ -199,35 +199,35 @@ export default function Dashboard() {
             onClick={() => handleFiltroChange('ultimos_7_dias')}
             disabled={loading}
           >
-             Últimos 7 días
+            📅 Últimos 7 días
           </button>
           <button
             className={`filter-btn ${filtroActual === 'ultimos_30_dias' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('ultimos_30_dias')}
             disabled={loading}
           >
-             Últimos 30 días
+            📅 Últimos 30 días
           </button>
           <button
             className={`filter-btn ${filtroActual === 'este_mes' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('este_mes')}
             disabled={loading}
           >
-             Este mes
+            📅 Este mes
           </button>
           <button
             className={`filter-btn ${filtroActual === 'mes_pasado' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('mes_pasado')}
             disabled={loading}
           >
-             Mes pasado
+            📅 Mes pasado
           </button>
           <button
             className={`filter-btn ${filtroActual === 'personalizado' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('personalizado')}
             disabled={loading}
           >
-             Personalizado
+            📅 Personalizado
           </button>
         </div>
       
@@ -455,13 +455,13 @@ export default function Dashboard() {
       </p>
 
       {/* Botones de Prueba */}
-      <div className="test-buttons">
+      {/* <div className="test-buttons">
         <button 
           onClick={generarDatosPrueba}
           disabled={loading}
           className="test-button generate"
         >
-           Generar Datos de Prueba
+          🧪 Generar Datos de Prueba
         </button>
         
         <button 
@@ -469,9 +469,9 @@ export default function Dashboard() {
           disabled={loading}
           className="test-button delete"
         >
-           Eliminar Datos de Prueba
+          🗑️ Eliminar Datos de Prueba
         </button>
-      </div>
+      </div> */}
     </div>
     </>
   );

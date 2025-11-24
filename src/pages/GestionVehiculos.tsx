@@ -1,4 +1,4 @@
-// Frontend/src/pages/GestionVehiculos.tsx
+// GestionVehiculos
 import { useState, useEffect } from 'react';
 import { logisticaService, type Vehiculo, type Transportista } from '../api/logisticaService';
 import Navbar from '../components/Navbar';
