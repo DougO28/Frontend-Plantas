@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+https://github.com/DougO28/BackendPlantas/tree/main#instalaci%C3%B3n
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
