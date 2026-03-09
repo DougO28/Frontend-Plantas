@@ -69,7 +69,7 @@ export default function OrderList() {
   // NUEVO: Enviar calificación
   const handleEnviarCalificacion = async () => {
     if (!pedidoSeleccionado || calificacion === 0) {
-      alert('⚠️ Por favor selecciona una calificación');
+      alert(' Por favor selecciona una calificación');
       return;
     }
 
