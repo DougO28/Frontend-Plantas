@@ -1,4 +1,4 @@
-/* ===== Fondo de página ===== */
+/*  Fondo de página  */
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -8,7 +8,7 @@
   padding: 2rem;
 }
 
-/* ===== Card principal (blanca) ===== */
+/*  Card principal  */
 .login-card {
   width: 100%;
   max-width: 1000px;
@@ -19,7 +19,7 @@
   backdrop-filter: saturate(120%);
 }
 
-/* ===== Encabezado ===== */
+/*  Encabezado  */
 .login-header {
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
   color: #2d3748;
 }
 
-/* ===== Columnas ===== */
+/*  Columnas  */
 .login-columns {
   display: grid;
   grid-template-columns: 1fr minmax(0, 1px) 1fr; /* col | divider | col */
@@ -74,7 +74,7 @@
   height: auto;
 }
 
-/* ===== Alertas ===== */
+/*  Alertas  */
 .alert {
   padding: 0.875rem 1rem;
   border-radius: 10px;
@@ -93,7 +93,7 @@
   font-size: 1.1rem;
 }
 
-/* ===== Formulario ===== */
+/*  Formulario  */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -173,7 +173,7 @@
   font-size: 0.85rem;
 }
 
-/* ===== Botones ===== */
+/*  Botones  */
 .btn-login {
   padding: 0.9rem 1rem;
   background: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
