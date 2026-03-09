@@ -128,27 +128,27 @@ export default function CrearRuta() {
     
     // Validaciones
     if (!formData.nombre_ruta) {
-      alert('⚠️ El nombre de la ruta es obligatorio');
+      alert(' El nombre de la ruta es obligatorio');
       return;
     }
     
     if (!formData.tecnico_campo) {
-      alert('⚠️ Debes asignar un técnico');
+      alert(' Debes asignar un técnico');
       return;
     }
     
     if (!formData.fecha_planificada) {
-      alert('⚠️ Debes seleccionar una fecha');
+      alert(' Debes seleccionar una fecha');
       return;
     }
     
     if (!formData.departamento) {
-      alert('⚠️ Debes seleccionar un departamento');
+      alert(' Debes seleccionar un departamento');
       return;
     }
     
     if (pedidosSeleccionados.size === 0) {
-      alert('⚠️ Debes seleccionar al menos un pedido');
+      alert(' Debes seleccionar al menos un pedido');
       return;
     }
 
