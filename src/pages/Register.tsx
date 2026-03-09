@@ -103,7 +103,7 @@ export default function Register() {
     }
 
     // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  //regex simple para correos
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  //regex para correo
     if (!emailRegex.test(formData.email)) {
       setError('Ingresa un correo electrónico válido');
       return false;
@@ -163,7 +163,7 @@ export default function Register() {
 
       setSuccess(true);
       
-      // Redirigir al login después de 2 segundos
+      // Redirigir al login despues de 2 segundos
       setTimeout(() => {
         navigate('/login');
       }, 2000);
@@ -395,7 +395,7 @@ export default function Register() {
                   aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   tabIndex={-1}
                 >
-                  {showPassword ? '👁️' : '👁️‍🗨️'}
+                  {showPassword ? '*' : '**'}
                 </button>
               </div>
             </div>
@@ -424,7 +424,7 @@ export default function Register() {
                   aria-label={showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   tabIndex={-1}
                 >
-                  {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
+                  {showConfirmPassword ? '*' : '**'}
                 </button>
               </div>
             </div>
