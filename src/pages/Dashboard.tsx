@@ -74,12 +74,12 @@ export default function Dashboard() {
   const handleFiltroPersonalizado = () => {
     if (fechaInicio && fechaFin) {
       if (fechaInicio > fechaFin) {
-        alert('⚠️ La fecha de inicio no puede ser mayor que la fecha de fin');
+        alert(' La fecha de inicio no puede ser mayor que la fecha de fin');
         return;
       }
       loadStats('personalizado', fechaInicio, fechaFin);
     } else {
-      alert('⚠️ Selecciona ambas fechas');
+      alert(' Selecciona ambas fechas');
     }
   };
 
@@ -199,35 +199,35 @@ export default function Dashboard() {
             onClick={() => handleFiltroChange('ultimos_7_dias')}
             disabled={loading}
           >
-            📅 Últimos 7 días
+             Últimos 7 días
           </button>
           <button
             className={`filter-btn ${filtroActual === 'ultimos_30_dias' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('ultimos_30_dias')}
             disabled={loading}
           >
-            📅 Últimos 30 días
+             Últimos 30 días
           </button>
           <button
             className={`filter-btn ${filtroActual === 'este_mes' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('este_mes')}
             disabled={loading}
           >
-            📅 Este mes
+             Este mes
           </button>
           <button
             className={`filter-btn ${filtroActual === 'mes_pasado' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('mes_pasado')}
             disabled={loading}
           >
-            📅 Mes pasado
+             Mes pasado
           </button>
           <button
             className={`filter-btn ${filtroActual === 'personalizado' ? 'active' : ''}`}
             onClick={() => handleFiltroChange('personalizado')}
             disabled={loading}
           >
-            📅 Personalizado
+             Personalizado
           </button>
         </div>
       
