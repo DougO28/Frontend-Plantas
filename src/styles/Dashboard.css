@@ -253,7 +253,7 @@
   scrollbar-color: #8BC34A #e2e8f0;
 }
 
-/* Clase para 7 días o menos (sin scroll, centrado) */
+/* Clase para s (sin scroll, centrado) */
 .chart-scroll-wrapper.no-scroll {
   overflow-x: visible;
 }
@@ -320,7 +320,7 @@
   font-weight: 500;
 }
 
-/* Contenedor de la gráfica de barras - CRITICO: Altura fija para que los % funcionen */
+/* Contenedor de la grafica de barras Altura fija para que los % funcionen */
 .chart-container {
   display: flex;
   align-items: flex-end;
@@ -363,7 +363,7 @@
   justify-content: flex-end;
 }
 
-/* La barra en sí - CRITICO: Usa box-sizing para incluir padding en el height */
+/* La barra en sí. Usa box-sizing para incluir padding en el height */
 .chart-bar {
   width: 100%;
   min-height: 25px !important;
@@ -484,7 +484,7 @@
   color: #4a5568;
 }
 
-/* Botones de Prueba - TEMPORAL */
+/* Botones de Prueba temporales */
 .test-buttons {
   position: fixed;
   bottom: 20px;
